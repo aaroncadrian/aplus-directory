@@ -14,6 +14,10 @@ const FIELDS = [
     name: 'lastName',
     label: 'Last Name',
   },
+  {
+    name: 'nickname',
+    label: 'Nickname',
+  },
 ];
 
 export const PersonDetailsForm = () => {
