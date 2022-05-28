@@ -1,1 +1,1 @@
-export * from './lib/web-directory-people-ui-forms';
+export * from './lib/person-details-form';
