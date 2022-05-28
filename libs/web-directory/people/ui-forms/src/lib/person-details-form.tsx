@@ -1,5 +1,6 @@
 import { FormField, Input, SpaceBetween } from '@awsui/components-react';
 import { Field } from 'react-final-form';
+import DatePicker from '@awsui/components-react/date-picker';
 
 const FIELDS = [
   {
@@ -37,6 +38,23 @@ export const PersonDetailsForm = () => {
           )}
         </Field>
       ))}
+
+      <Field name={'dateOfBirth'}>
+        {({ input: { value, onChange, onFocus, onBlur } }) => (
+          <FormField label={'Date of Birth'}>
+            <DatePicker
+              placeholder={'yyyy/mm/dd'}
+              todayAriaLabel={'Today'}
+              nextMonthAriaLabel={'Next Month'}
+              previousMonthAriaLabel={'Previous Month'}
+              value={value}
+              onBlur={onBlur as any}
+              onFocus={onFocus as any}
+              onChange={(event) => onChange(event.detail.value)}
+            />
+          </FormField>
+        )}
+      </Field>
     </SpaceBetween>
   );
 };
