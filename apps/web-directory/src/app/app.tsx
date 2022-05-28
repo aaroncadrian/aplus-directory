@@ -1,9 +1,17 @@
-import { BrowserRouter } from 'react-router-dom';
+import { BrowserRouter, Link, Route, Routes } from 'react-router-dom';
+import { WebDirectoryPeopleFeatureShell } from '@aplus/web-directory/people/feature-shell';
 
 export function App() {
   return (
     <BrowserRouter>
-      <div>Aaron</div>
+      <Routes>
+        <Route
+          index
+          element={<Link to={'/people/create'}>Create Person</Link>}
+        />
+
+        <Route path={'people/*'} element={<WebDirectoryPeopleFeatureShell />} />
+      </Routes>
     </BrowserRouter>
   );
 }

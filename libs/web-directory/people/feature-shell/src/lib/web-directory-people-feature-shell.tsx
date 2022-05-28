@@ -1,15 +1,11 @@
-import styles from './web-directory-people-feature-shell.module.scss';
+import { Route, Routes } from 'react-router-dom';
+import WebDirectoryPeopleFeatureCreate from '@aplus/web-directory/people/feature-create';
 
-/* eslint-disable-next-line */
-export interface WebDirectoryPeopleFeatureShellProps {}
-
-export function WebDirectoryPeopleFeatureShell(
-  props: WebDirectoryPeopleFeatureShellProps
-) {
+export function WebDirectoryPeopleFeatureShell() {
   return (
-    <div className={styles['container']}>
-      <h1>Welcome to WebDirectoryPeopleFeatureShell!</h1>
-    </div>
+    <Routes>
+      <Route path={'create'} element={<WebDirectoryPeopleFeatureCreate />} />
+    </Routes>
   );
 }
 
