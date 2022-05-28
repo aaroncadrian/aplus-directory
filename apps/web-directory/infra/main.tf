@@ -4,6 +4,10 @@ terraform {
       source  = "hashicorp/aws"
       version = "~> 3.27"
     }
+    random = {
+      source  = "hashicorp/random"
+      version = "~> 3.1.0"
+    }
   }
 
   required_version = ">= 0.14.9"
@@ -23,10 +27,14 @@ locals {
   app_name = "web-directory"
 }
 
+resource "random_pet" "bucket_name" {
+  prefix = "${local.app_name}-${var.environment_name}"
+}
+
 module "frontend_dist" {
   source = "../../../infra/modules/frontend-serverless-dist"
 
-  bucket_name    = "${local.app_name}-${var.environment_name}"
+  bucket_name    = random_pet.bucket_name.id
   dist_directory = "${path.module}/../../../dist/apps/${local.app_name}"
 }
 
