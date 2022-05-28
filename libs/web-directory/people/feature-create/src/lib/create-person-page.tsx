@@ -23,7 +23,7 @@ export const CreatePersonPage = () => {
             header={<Header variant={'h1'}>Create Person</Header>}
             actions={
               <SpaceBetween size={'s'} direction={'horizontal'}>
-                <Button>Cancel</Button>
+                <Button formAction={'none'}>Cancel</Button>
 
                 <Button formAction={'submit'} variant={'primary'}>
                   Create
