@@ -20,6 +20,9 @@
       ],
       "@aplus/web-directory/people/feature-shell": [
         "libs/web-directory/people/feature-shell/src/index.ts"
+      ],
+      "@aplus/web-directory/people/ui-forms": [
+        "libs/web-directory/people/ui-forms/src/index.ts"
       ]
     }
   },
