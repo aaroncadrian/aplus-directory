@@ -29,12 +29,10 @@ const FIELDS = [
 
 const GENDER_SELECT_OPTIONS: SelectProps.Options = [
   {
-    label: 'Man',
-    value: 'MAN',
+    value: 'Man',
   },
   {
-    label: 'Woman',
-    value: 'WOMAN',
+    value: 'Woman',
   },
 ];
 

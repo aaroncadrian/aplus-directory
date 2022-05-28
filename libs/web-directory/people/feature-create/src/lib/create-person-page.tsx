@@ -5,8 +5,12 @@ import {
   Header,
   SpaceBetween,
 } from '@awsui/components-react';
-import { PersonDetailsForm } from '@aplus/web-directory/people/ui-forms';
+import {
+  PersonDetailsForm,
+  PhoneNumbersForm,
+} from '@aplus/web-directory/people/ui-forms';
 import { Form as RFF } from 'react-final-form';
+import arrayMutators from 'final-form-arrays';
 
 export const CreatePersonPage = () => {
   const submitPerson = (formValues: unknown) => {
@@ -14,7 +18,12 @@ export const CreatePersonPage = () => {
   };
 
   return (
-    <RFF onSubmit={submitPerson}>
+    <RFF
+      onSubmit={submitPerson}
+      mutators={{
+        ...arrayMutators,
+      }}
+    >
       {({ handleSubmit, values }) => (
         <form onSubmit={handleSubmit}>
           <pre>{JSON.stringify(values, null, 2)}</pre>
@@ -34,6 +43,10 @@ export const CreatePersonPage = () => {
             <SpaceBetween size={'l'}>
               <Container header={<Header>Details</Header>}>
                 <PersonDetailsForm />
+              </Container>
+
+              <Container header={<Header>Phone Numbers</Header>}>
+                <PhoneNumbersForm />
               </Container>
             </SpaceBetween>
           </Form>
