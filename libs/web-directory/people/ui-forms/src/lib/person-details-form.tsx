@@ -1,4 +1,10 @@
-import { FormField, Input, SpaceBetween } from '@awsui/components-react';
+import {
+  FormField,
+  Input,
+  Select,
+  SelectProps,
+  SpaceBetween,
+} from '@awsui/components-react';
 import { Field } from 'react-final-form';
 import DatePicker from '@awsui/components-react/date-picker';
 
@@ -21,6 +27,17 @@ const FIELDS = [
   },
 ];
 
+const GENDER_SELECT_OPTIONS: SelectProps.Options = [
+  {
+    label: 'Man',
+    value: 'MAN',
+  },
+  {
+    label: 'Woman',
+    value: 'WOMAN',
+  },
+];
+
 export const PersonDetailsForm = () => {
   return (
     <SpaceBetween size={'m'}>
@@ -38,6 +55,20 @@ export const PersonDetailsForm = () => {
           )}
         </Field>
       ))}
+
+      <Field name={'gender'}>
+        {({ input: { value, onChange, onFocus, onBlur } }) => (
+          <FormField label={'Gender'}>
+            <Select
+              options={GENDER_SELECT_OPTIONS}
+              selectedOption={value}
+              onBlur={onBlur as any}
+              onFocus={onFocus as any}
+              onChange={(event) => onChange(event.detail.selectedOption)}
+            />
+          </FormField>
+        )}
+      </Field>
 
       <Field name={'dateOfBirth'}>
         {({ input: { value, onChange, onFocus, onBlur } }) => (
