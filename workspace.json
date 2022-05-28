@@ -3,6 +3,8 @@
   "version": 2,
   "projects": {
     "web-directory": "apps/web-directory",
-    "web-directory-e2e": "apps/web-directory-e2e"
+    "web-directory-e2e": "apps/web-directory-e2e",
+    "web-directory-people-feature-create": "libs/web-directory/people/feature-create",
+    "web-directory-people-feature-shell": "libs/web-directory/people/feature-shell"
   }
 }

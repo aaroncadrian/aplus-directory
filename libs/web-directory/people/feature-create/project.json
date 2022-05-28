@@ -1,0 +1,25 @@
+{
+  "$schema": "../../../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "libs/web-directory/people/feature-create/src",
+  "projectType": "library",
+  "tags": ["scope:web-directory", "type:feature"],
+  "targets": {
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": [
+          "libs/web-directory/people/feature-create/**/*.{ts,tsx,js,jsx}"
+        ]
+      }
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/libs/web-directory/people/feature-create"],
+      "options": {
+        "jestConfig": "libs/web-directory/people/feature-create/jest.config.ts",
+        "passWithNoTests": true
+      }
+    }
+  }
+}
