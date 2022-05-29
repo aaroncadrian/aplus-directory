@@ -1,1 +1,1 @@
-export * from './lib/shared-util-dates';
+export * from './lib/get-current-timestamp';
