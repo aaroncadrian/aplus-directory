@@ -13,7 +13,7 @@ import { CreatePersonInput } from './people/create-person.input';
 import { customPlainToInstance } from './custom-plain-to-instance';
 import Chance from 'chance';
 import { range } from 'lodash';
-import { nanoid } from 'nanoid';
+import { generateUniqueId } from '@aplus/shared/util-ids';
 
 const chance = new Chance();
 
@@ -43,7 +43,7 @@ export class PeopleResolver {
   async people(): Promise<Person[]> {
     return range(5).map(() =>
       generateFakePerson({
-        id: nanoid(),
+        id: generateUniqueId(),
       })
     );
   }

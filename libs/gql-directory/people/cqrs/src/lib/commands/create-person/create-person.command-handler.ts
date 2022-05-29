@@ -1,6 +1,6 @@
 import { CommandHandler, ICommandHandler } from '@nestjs/cqrs';
 import { CreatePersonCommandInput } from './create-person.command-input';
-import { nanoid } from 'nanoid';
+import { generateUniqueId } from '@aplus/shared/util-ids';
 
 @CommandHandler(CreatePersonCommandInput)
 export class CreatePersonCommandHandler
@@ -8,7 +8,7 @@ export class CreatePersonCommandHandler
 {
   async execute(command: CreatePersonCommandInput): Promise<unknown> {
     return {
-      id: nanoid(),
+      id: generateUniqueId(),
       firstName: command.firstName,
       lastName: command.lastName,
     };
