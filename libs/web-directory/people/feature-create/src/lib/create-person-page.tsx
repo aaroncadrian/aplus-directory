@@ -1,4 +1,5 @@
 import {
+  BreadcrumbGroup,
   Button,
   Container,
   Form,
@@ -14,11 +15,15 @@ import {
 import { Form as RFF } from 'react-final-form';
 import arrayMutators from 'final-form-arrays';
 import { PrefixProvider } from '@aplus/react/ui-forms';
+import React from 'react';
+import { useNavigate } from 'react-router-dom';
 
 export const CreatePersonPage = () => {
   const submitPerson = (formValues: unknown) => {
     console.log('submit', formValues);
   };
+
+  const navigate = useNavigate();
 
   return (
     <RFF
@@ -30,6 +35,33 @@ export const CreatePersonPage = () => {
     >
       {({ handleSubmit }) => (
         <form onSubmit={handleSubmit}>
+          <BreadcrumbGroup
+            items={[
+              {
+                text: 'Directory',
+                href: '/',
+              },
+              {
+                text: 'People',
+                href: '/people',
+              },
+              {
+                text: 'Create Person',
+                href: '/people/create',
+              },
+            ]}
+            onClick={(event) => {
+              console.log('onclick');
+              event.preventDefault();
+            }}
+            onFollow={(event) => {
+              console.log('onfollow');
+
+              event.preventDefault();
+              navigate(event.detail.href);
+            }}
+          />
+
           <Form
             header={<Header variant={'h1'}>Create Person</Header>}
             actions={
