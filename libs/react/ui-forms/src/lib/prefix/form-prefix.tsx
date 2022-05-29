@@ -24,19 +24,19 @@ export const usePrefixFieldName = () => {
 export const PrefixProvider = (props: {
   prefix: string;
   children?: React.ReactNode;
-  startNewLineage?: boolean;
+  excludePreviousPrefix?: boolean;
 }) => {
-  const { prefix, children, startNewLineage = false } = props;
+  const { prefix, children, excludePreviousPrefix = false } = props;
 
   const prevPrefix = useFormPrefix();
 
   const prefixValue = useMemo(() => {
-    if (startNewLineage || !prevPrefix) {
+    if (excludePreviousPrefix || !prevPrefix) {
       return prefix;
     }
 
     return `${prevPrefix}.${prefix}`;
-  }, [prefix, startNewLineage, prevPrefix]);
+  }, [prefix, excludePreviousPrefix, prevPrefix]);
 
   return (
     <PrefixContext.Provider value={prefixValue}>
