@@ -1,9 +1,10 @@
 import { Field, ID, ObjectType } from '@nestjs/graphql';
+import { Person as IPerson } from '@aplus/shared/people/domain';
 
 @ObjectType({
   description: 'person',
 })
-export class Person {
+export class Person implements IPerson {
   @Field((type) => ID)
   id: string;
 
