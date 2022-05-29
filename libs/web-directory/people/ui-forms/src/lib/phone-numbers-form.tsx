@@ -10,6 +10,7 @@ import { Field } from 'react-final-form';
 import { GridProps } from '@awsui/components-react/grid';
 import { FormFieldLabel } from './_internal/form-field-label';
 import { renderAwsField } from './_internal/render-aws-field';
+import { parsePhoneNumber } from '@aplus/react/ui-forms';
 
 const GRID_DEF: ReadonlyArray<GridProps.ElementDefinition> = [
   { colspan: { default: 12, m: 4 } },
@@ -49,7 +50,7 @@ export const PhoneNumbersForm = () => {
 
             {fields.map((name, index) => (
               <Grid key={name} gridDefinition={GRID_DEF}>
-                <Field name={`${name}.phoneNumber`}>
+                <Field name={`${name}.phoneNumber`} parse={parsePhoneNumber}>
                   {renderAwsField(
                     ({ input: { value, onChange, onFocus, onBlur } }) => (
                       <Input
