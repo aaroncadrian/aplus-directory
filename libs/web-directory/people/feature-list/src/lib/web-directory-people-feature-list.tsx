@@ -1,14 +1,23 @@
-import styles from './web-directory-people-feature-list.module.scss';
+import { gql, useQuery } from '@apollo/client';
 
-/* eslint-disable-next-line */
-export interface WebDirectoryPeopleFeatureListProps {}
+const LIST_PEOPLE = gql`
+  query ListPeople {
+    listPeople {
+      id
+      firstName
+      lastName
+    }
+  }
+`;
 
-export function WebDirectoryPeopleFeatureList(
-  props: WebDirectoryPeopleFeatureListProps
-) {
+export function WebDirectoryPeopleFeatureList() {
+  const { data } = useQuery(LIST_PEOPLE);
+
   return (
-    <div className={styles['container']}>
+    <div>
       <h1>Welcome to WebDirectoryPeopleFeatureList!</h1>
+
+      <pre>{JSON.stringify(data, null, 2)}</pre>
     </div>
   );
 }
