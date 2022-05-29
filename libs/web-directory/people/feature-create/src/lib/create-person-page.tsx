@@ -11,6 +11,7 @@ import {
 } from '@aplus/web-directory/people/ui-forms';
 import { Form as RFF } from 'react-final-form';
 import arrayMutators from 'final-form-arrays';
+import { AddressForm } from '../../../ui-forms/src/lib/addresses/address-form';
 
 export const CreatePersonPage = () => {
   const submitPerson = (formValues: unknown) => {
@@ -47,6 +48,10 @@ export const CreatePersonPage = () => {
 
               <Container header={<Header>Phones</Header>}>
                 <PhoneNumbersForm />
+              </Container>
+
+              <Container header={<Header>Address</Header>}>
+                <AddressForm />
               </Container>
             </SpaceBetween>
           </Form>
