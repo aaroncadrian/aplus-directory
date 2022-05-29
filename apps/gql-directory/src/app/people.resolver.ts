@@ -11,6 +11,17 @@ import { CommandBus } from '@nestjs/cqrs';
 import { CreatePersonCommandInput } from '@aplus/gql-directory/people/cqrs';
 import { CreatePersonInput } from './people/create-person.input';
 import { customPlainToInstance } from './custom-plain-to-instance';
+import Chance from 'chance';
+import { range } from 'lodash';
+import { nanoid } from 'nanoid';
+
+const chance = new Chance();
+
+const generateFakePerson = (props: { id: string }): Person => ({
+  id: props.id,
+  firstName: chance.first(),
+  lastName: chance.last(),
+});
 
 @Resolver((of) => Person)
 export class PeopleResolver {
@@ -18,11 +29,9 @@ export class PeopleResolver {
 
   @Query((returns) => Person)
   async person(@Args('personId') personId: string): Promise<Person> {
-    return {
-      id: 'DEMO_ID',
-      firstName: 'Demo First',
-      lastName: 'Demo Last',
-    };
+    return generateFakePerson({
+      id: personId,
+    });
   }
 
   @ResolveField()
@@ -32,11 +41,18 @@ export class PeopleResolver {
 
   @Query((returns) => [Person])
   async people(): Promise<Person[]> {
-    return [];
+    return range(5).map(() =>
+      generateFakePerson({
+        id: nanoid(),
+      })
+    );
   }
 
   @Mutation(() => Person)
-  async createPerson(@Args('input') input: CreatePersonInput): Promise<Person> {
+  async createPerson(
+    @Args('input')
+    input: CreatePersonInput
+  ): Promise<Person> {
     return this.commandBus.execute(
       customPlainToInstance(CreatePersonCommandInput, {
         firstName: input.firstName,
