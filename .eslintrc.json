@@ -34,7 +34,10 @@
           "error",
           {
             "paths": [
-              "nanoid"
+              {
+                "name": "nanoid",
+                "message": "Please use `generateUniqueId` instead."
+              }
             ]
           }
         ],
