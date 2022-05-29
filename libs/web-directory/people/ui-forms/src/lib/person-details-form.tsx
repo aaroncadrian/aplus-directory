@@ -9,6 +9,7 @@ import { Field } from 'react-final-form';
 import DatePicker from '@awsui/components-react/date-picker';
 import { FormFieldLabel } from './_internal/form-field-label';
 import { renderAwsField } from './_internal/render-aws-field';
+import { renderAwsSelect } from './_internal/render-aws-select';
 
 const FIELDS = [
   {
@@ -67,21 +68,21 @@ export const PersonDetailsForm = () => {
       ))}
 
       <Field name={'gender'}>
-        {({ input: { value, onChange, onFocus, onBlur } }) => (
+        {renderAwsSelect(({ input: { value, onChange, onFocus, onBlur } }) => (
           <FormField label={<FormFieldLabel optional>Gender</FormFieldLabel>}>
             <Select
               options={GENDER_SELECT_OPTIONS}
               selectedOption={value}
-              onBlur={onBlur as any}
-              onFocus={onFocus as any}
+              onBlur={onBlur}
+              onFocus={onFocus}
               onChange={(event) => onChange(event.detail.selectedOption)}
             />
           </FormField>
-        )}
+        ))}
       </Field>
 
       <Field name={'dateOfBirth'}>
-        {({ input: { value, onChange, onFocus, onBlur } }) => (
+        {renderAwsField(({ input: { value, onChange, onFocus, onBlur } }) => (
           <FormField
             label={<FormFieldLabel optional>Date of Birth</FormFieldLabel>}
           >
@@ -91,12 +92,12 @@ export const PersonDetailsForm = () => {
               nextMonthAriaLabel={'Next Month'}
               previousMonthAriaLabel={'Previous Month'}
               value={value}
-              onBlur={onBlur as any}
-              onFocus={onFocus as any}
+              onBlur={onBlur}
+              onFocus={onFocus}
               onChange={(event) => onChange(event.detail.value)}
             />
           </FormField>
-        )}
+        ))}
       </Field>
     </SpaceBetween>
   );

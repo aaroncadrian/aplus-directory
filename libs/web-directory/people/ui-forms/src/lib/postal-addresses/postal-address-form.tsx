@@ -1,5 +1,6 @@
 import { FormField, Input, SpaceBetween } from '@awsui/components-react';
 import { Field } from 'react-final-form';
+import { renderAwsField } from '../_internal/render-aws-field';
 
 const FIELDS = [
   {
@@ -33,16 +34,16 @@ export const PostalAddressForm = () => {
     <SpaceBetween size={'m'}>
       {FIELDS.map((field) => (
         <Field key={field.name} name={field.name}>
-          {({ input: { value, onChange, onFocus, onBlur } }) => (
+          {renderAwsField(({ input: { value, onChange, onFocus, onBlur } }) => (
             <FormField label={field.label}>
               <Input
                 value={value}
-                onBlur={onBlur as any}
-                onFocus={onFocus as any}
+                onBlur={onBlur}
+                onFocus={onFocus}
                 onChange={(event) => onChange(event.detail.value)}
               />
             </FormField>
-          )}
+          ))}
         </Field>
       ))}
     </SpaceBetween>

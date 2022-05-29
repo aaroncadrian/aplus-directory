@@ -9,6 +9,7 @@ import { FieldArray } from 'react-final-form-arrays';
 import { Field } from 'react-final-form';
 import { GridProps } from '@awsui/components-react/grid';
 import { FormFieldLabel } from './_internal/form-field-label';
+import { renderAwsField } from './_internal/render-aws-field';
 
 const GRID_DEF: ReadonlyArray<GridProps.ElementDefinition> = [
   { colspan: { default: 12, m: 4 } },
@@ -49,28 +50,32 @@ export const PhoneNumbersForm = () => {
             {fields.map((name, index) => (
               <Grid key={name} gridDefinition={GRID_DEF}>
                 <Field name={`${name}.phoneNumber`}>
-                  {({ input: { value, onChange, onFocus, onBlur } }) => (
-                    <Input
-                      autoFocus
-                      value={value}
-                      onBlur={onBlur as any}
-                      onFocus={onFocus as any}
-                      onChange={(event) => onChange(event.detail.value)}
-                    />
+                  {renderAwsField(
+                    ({ input: { value, onChange, onFocus, onBlur } }) => (
+                      <Input
+                        autoFocus
+                        value={value}
+                        onBlur={onBlur}
+                        onFocus={onFocus}
+                        onChange={(event) => onChange(event.detail.value)}
+                      />
+                    )
                   )}
                 </Field>
 
                 <Field name={`${name}.phoneType`}>
-                  {({ input: { value, onChange, onFocus, onBlur } }) => (
-                    <Autosuggest
-                      options={PHONE_TYPE_OPTIONS}
-                      enteredTextLabel={(value) => value}
-                      placeholder={name}
-                      value={value}
-                      onBlur={onBlur as any}
-                      onFocus={onFocus as any}
-                      onChange={(event) => onChange(event.detail.value)}
-                    />
+                  {renderAwsField(
+                    ({ input: { value, onChange, onFocus, onBlur } }) => (
+                      <Autosuggest
+                        options={PHONE_TYPE_OPTIONS}
+                        enteredTextLabel={(value) => value}
+                        placeholder={name}
+                        value={value}
+                        onBlur={onBlur}
+                        onFocus={onFocus}
+                        onChange={(event) => onChange(event.detail.value)}
+                      />
+                    )
                   )}
                 </Field>
 
