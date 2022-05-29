@@ -12,6 +12,7 @@ const FIELDS = [
   {
     name: 'firstName',
     label: 'First Name',
+    autoFocus: true,
   },
   {
     name: 'middleName',
@@ -44,6 +45,7 @@ export const PersonDetailsForm = () => {
           {({ input: { value, onChange, onFocus, onBlur } }) => (
             <FormField label={field.label}>
               <Input
+                autoFocus={field.autoFocus}
                 value={value}
                 onBlur={onBlur as any}
                 onFocus={onFocus as any}

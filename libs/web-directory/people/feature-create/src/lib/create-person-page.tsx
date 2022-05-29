@@ -45,7 +45,7 @@ export const CreatePersonPage = () => {
                 <PersonDetailsForm />
               </Container>
 
-              <Container header={<Header>Phone Numbers</Header>}>
+              <Container header={<Header>Phones</Header>}>
                 <PhoneNumbersForm />
               </Container>
             </SpaceBetween>
