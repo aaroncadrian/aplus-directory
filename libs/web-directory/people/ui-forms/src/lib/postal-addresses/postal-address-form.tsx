@@ -28,7 +28,7 @@ const FIELDS = [
   },
 ];
 
-export const AddressForm = () => {
+export const PostalAddressForm = () => {
   return (
     <SpaceBetween size={'m'}>
       {FIELDS.map((field) => (
