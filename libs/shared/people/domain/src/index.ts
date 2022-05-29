@@ -1,1 +1,1 @@
-export * from './lib/shared-people-domain';
+export * from './lib/person';
