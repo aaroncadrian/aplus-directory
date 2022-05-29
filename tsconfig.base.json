@@ -14,7 +14,18 @@
     "skipLibCheck": true,
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
-    "paths": {}
+    "paths": {
+      "@aplus/react/ui-forms": ["libs/react/ui-forms/src/index.ts"],
+      "@aplus/web-directory/people/feature-create": [
+        "libs/web-directory/people/feature-create/src/index.ts"
+      ],
+      "@aplus/web-directory/people/feature-shell": [
+        "libs/web-directory/people/feature-shell/src/index.ts"
+      ],
+      "@aplus/web-directory/people/ui-forms": [
+        "libs/web-directory/people/ui-forms/src/index.ts"
+      ]
+    }
   },
   "exclude": ["node_modules", "tmp"]
 }
