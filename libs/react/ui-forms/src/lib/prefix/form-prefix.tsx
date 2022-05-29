@@ -1,4 +1,4 @@
-import React, { useCallback, useContext } from 'react';
+import React, { useCallback, useContext, useMemo } from 'react';
 
 const PrefixContext = React.createContext<string | undefined>(undefined);
 
@@ -24,10 +24,23 @@ export const usePrefixFieldName = () => {
 export const PrefixProvider = (props: {
   prefix: string;
   children?: React.ReactNode;
+  startNewLineage?: boolean;
 }) => {
-  const { prefix, children } = props;
+  const { prefix, children, startNewLineage = false } = props;
+
+  const prevPrefix = useFormPrefix();
+
+  const prefixValue = useMemo(() => {
+    if (startNewLineage || !prevPrefix) {
+      return prefix;
+    }
+
+    return `${prevPrefix}.${prefix}`;
+  }, [prefix, startNewLineage, prevPrefix]);
 
   return (
-    <PrefixContext.Provider value={prefix}>{children}</PrefixContext.Provider>
+    <PrefixContext.Provider value={prefixValue}>
+      {children}
+    </PrefixContext.Provider>
   );
 };
