@@ -69,7 +69,6 @@ export const PhoneNumbersForm = () => {
                       <Autosuggest
                         options={PHONE_TYPE_OPTIONS}
                         enteredTextLabel={(value) => value}
-                        placeholder={name}
                         value={value}
                         onBlur={onBlur}
                         onFocus={onFocus}
