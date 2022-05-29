@@ -5,6 +5,7 @@
     "gql-directory": "apps/gql-directory",
     "gql-directory-people-cqrs": "libs/gql-directory/people/cqrs",
     "react-ui-forms": "libs/react/ui-forms",
+    "shared-people-domain": "libs/shared/people/domain",
     "shared-util-dates": "libs/shared/util-dates",
     "shared-util-ids": "libs/shared/util-ids",
     "web-directory": "apps/web-directory",

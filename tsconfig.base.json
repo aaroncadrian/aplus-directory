@@ -21,6 +21,7 @@
         "libs/gql-directory/people/cqrs/src/index.ts"
       ],
       "@aplus/react/ui-forms": ["libs/react/ui-forms/src/index.ts"],
+      "@aplus/shared/people/domain": ["libs/shared/people/domain/src/index.ts"],
       "@aplus/shared/util-dates": ["libs/shared/util-dates/src/index.ts"],
       "@aplus/shared/util-ids": ["libs/shared/util-ids/src/index.ts"],
       "@aplus/web-directory/people/feature-create": [
