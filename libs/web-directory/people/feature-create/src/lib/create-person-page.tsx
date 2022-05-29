@@ -25,7 +25,7 @@ export const CreatePersonPage = () => {
       }}
       subscription={{ submitting: true, pristine: true }}
     >
-      {({ handleSubmit, values }) => (
+      {({ handleSubmit }) => (
         <form onSubmit={handleSubmit}>
           <Form
             header={<Header variant={'h1'}>Create Person</Header>}
