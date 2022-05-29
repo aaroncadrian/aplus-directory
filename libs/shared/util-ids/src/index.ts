@@ -1,1 +1,1 @@
-export * from './lib/shared-util-ids';
+export * from './lib/generate-unique-id';
