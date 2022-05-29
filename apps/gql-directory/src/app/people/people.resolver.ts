@@ -16,8 +16,8 @@ import {
   ListPeopleCommandInput,
   ListPeopleCommandOutput,
 } from '@aplus/gql-directory/people/cqrs';
-import { CreatePersonInput } from './people/create-person.input';
-import { customPlainToInstance } from './custom-plain-to-instance';
+import { CreatePersonInput } from './create-person.input';
+import { customPlainToInstance } from '../utils/custom-plain-to-instance';
 
 @Resolver((of) => Person)
 export class PeopleResolver {

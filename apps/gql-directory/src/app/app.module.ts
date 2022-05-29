@@ -4,7 +4,7 @@ import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { ApolloDriver, ApolloDriverConfig } from '@nestjs/apollo';
 import { GraphQLModule } from '@nestjs/graphql';
-import { PeopleResolver } from './people.resolver';
+import { PeopleResolver } from './people/people.resolver';
 import { GqlDirectoryPeopleCqrsModule } from '@aplus/gql-directory/people/cqrs';
 
 @Module({
