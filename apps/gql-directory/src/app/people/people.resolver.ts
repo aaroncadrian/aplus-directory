@@ -6,7 +6,7 @@ import {
   ResolveField,
   Resolver,
 } from '@nestjs/graphql';
-import { Person } from './person.model';
+import { Person } from './models/person.model';
 import { CommandBus } from '@nestjs/cqrs';
 import {
   CreatePersonCommandInput,
@@ -16,7 +16,7 @@ import {
   ListPeopleCommandInput,
   ListPeopleCommandOutput,
 } from '@aplus/gql-directory/people/cqrs';
-import { CreatePersonInput } from './create-person.input';
+import { CreatePersonInput } from './dtos/create-person.input';
 import { customPlainToInstance } from '../utils/custom-plain-to-instance';
 
 @Resolver((of) => Person)
