@@ -43,13 +43,18 @@ export class PeopleResolver {
   }
 
   @Query((returns) => [Person])
-  async listPeople(): Promise<Person[]> {
+  async listPeople(
+    @Args('limit', {
+      nullable: true,
+    })
+    limit: number | undefined
+  ): Promise<Person[]> {
     const result = await this.commandBus.execute<
       ListPeopleCommandInput,
       ListPeopleCommandOutput
     >(
       customPlainToInstance(ListPeopleCommandInput, {
-        limit: 3,
+        limit,
       })
     );
 
