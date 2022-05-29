@@ -9,6 +9,7 @@
   },
   "private": true,
   "dependencies": {
+    "@apollo/client": "^3.6.5",
     "@awsui/components-react": "^3.0.505",
     "@awsui/global-styles": "^1.0.14",
     "@nestjs/apollo": "^10.0.13",
