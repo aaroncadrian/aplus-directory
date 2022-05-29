@@ -11,20 +11,13 @@ import { CommandBus } from '@nestjs/cqrs';
 import {
   CreatePersonCommandInput,
   CreatePersonCommandOutput,
+  DescribePersonCommandInput,
+  DescribePersonCommandOutput,
   ListPeopleCommandInput,
   ListPeopleCommandOutput,
 } from '@aplus/gql-directory/people/cqrs';
 import { CreatePersonInput } from './people/create-person.input';
 import { customPlainToInstance } from './custom-plain-to-instance';
-import Chance from 'chance';
-
-const chance = new Chance();
-
-const generateFakePerson = (props: { id: string }): Person => ({
-  id: props.id,
-  firstName: chance.first(),
-  lastName: chance.last(),
-});
 
 @Resolver((of) => Person)
 export class PeopleResolver {
@@ -32,9 +25,16 @@ export class PeopleResolver {
 
   @Query((returns) => Person)
   async describePerson(@Args('personId') personId: string): Promise<Person> {
-    return generateFakePerson({
-      id: personId,
-    });
+    const result = await this.commandBus.execute<
+      DescribePersonCommandInput,
+      DescribePersonCommandOutput
+    >(
+      customPlainToInstance(DescribePersonCommandInput, {
+        personId,
+      })
+    );
+
+    return result.record;
   }
 
   @ResolveField()
