@@ -6,12 +6,13 @@ import {
   SpaceBetween,
 } from '@awsui/components-react';
 import {
+  EmailAddressForm,
   PersonDetailsForm,
   PhoneNumbersForm,
+  PostalAddressForm,
 } from '@aplus/web-directory/people/ui-forms';
 import { Form as RFF } from 'react-final-form';
 import arrayMutators from 'final-form-arrays';
-import { PostalAddressForm } from '../../../ui-forms/src/lib/postal-addresses/postal-address-form';
 
 export const CreatePersonPage = () => {
   const submitPerson = (formValues: unknown) => {
@@ -27,8 +28,6 @@ export const CreatePersonPage = () => {
     >
       {({ handleSubmit, values }) => (
         <form onSubmit={handleSubmit}>
-          <pre>{JSON.stringify(values, null, 2)}</pre>
-
           <Form
             header={<Header variant={'h1'}>Create Person</Header>}
             actions={
@@ -42,6 +41,10 @@ export const CreatePersonPage = () => {
             }
           >
             <SpaceBetween size={'l'}>
+              <Container header={<Header>Email Address</Header>}>
+                <EmailAddressForm />
+              </Container>
+
               <Container header={<Header>Details</Header>}>
                 <PersonDetailsForm />
               </Container>
