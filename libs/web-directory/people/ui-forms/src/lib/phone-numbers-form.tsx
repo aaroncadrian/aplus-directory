@@ -8,6 +8,7 @@ import {
 import { FieldArray } from 'react-final-form-arrays';
 import { Field } from 'react-final-form';
 import { GridProps } from '@awsui/components-react/grid';
+import { FormFieldLabel } from './_internal/form-field-label';
 
 const GRID_DEF: ReadonlyArray<GridProps.ElementDefinition> = [
   { colspan: { default: 12, m: 4 } },
@@ -35,20 +36,22 @@ export const PhoneNumbersForm = () => {
           <>
             {(fields.length ?? 0) > 0 && (
               <Grid gridDefinition={GRID_DEF}>
-                <div>Phone Type</div>
-                <div>Phone Number</div>
+                <div>
+                  <FormFieldLabel>Phone Number</FormFieldLabel>
+                </div>
+                <div>
+                  <FormFieldLabel optional>Phone Type</FormFieldLabel>
+                </div>
                 <div></div>
               </Grid>
             )}
 
             {fields.map((name, index) => (
               <Grid gridDefinition={GRID_DEF}>
-                <Field name={`${name}.phoneType`}>
+                <Field name={`${name}.phoneNumber`}>
                   {({ input: { value, onChange, onFocus, onBlur } }) => (
-                    <Autosuggest
-                      options={PHONE_TYPE_OPTIONS}
-                      enteredTextLabel={(value) => value}
-                      placeholder={name}
+                    <Input
+                      autoFocus
                       value={value}
                       onBlur={onBlur as any}
                       onFocus={onFocus as any}
@@ -57,9 +60,12 @@ export const PhoneNumbersForm = () => {
                   )}
                 </Field>
 
-                <Field name={`${name}.phoneNumber`}>
+                <Field name={`${name}.phoneType`}>
                   {({ input: { value, onChange, onFocus, onBlur } }) => (
-                    <Input
+                    <Autosuggest
+                      options={PHONE_TYPE_OPTIONS}
+                      enteredTextLabel={(value) => value}
+                      placeholder={name}
                       value={value}
                       onBlur={onBlur as any}
                       onFocus={onFocus as any}
@@ -102,12 +108,12 @@ export const PhoneNumbersForm = () => {
         {({ fields }) => (
           <Button
             formAction={'none'}
-            onClick={() =>
+            onClick={() => {
               fields.push({
-                phoneType: 'Cell',
+                phoneType: '',
                 phoneNumber: '',
-              })
-            }
+              });
+            }}
           >
             Add Phone
           </Button>
