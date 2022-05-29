@@ -47,7 +47,7 @@ export const PhoneNumbersForm = () => {
             )}
 
             {fields.map((name, index) => (
-              <Grid gridDefinition={GRID_DEF}>
+              <Grid key={name} gridDefinition={GRID_DEF}>
                 <Field name={`${name}.phoneNumber`}>
                   {({ input: { value, onChange, onFocus, onBlur } }) => (
                     <Input
