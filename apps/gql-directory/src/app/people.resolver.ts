@@ -31,7 +31,7 @@ export class PeopleResolver {
   constructor(private commandBus: CommandBus) {}
 
   @Query((returns) => Person)
-  async person(@Args('personId') personId: string): Promise<Person> {
+  async describePerson(@Args('personId') personId: string): Promise<Person> {
     return generateFakePerson({
       id: personId,
     });
@@ -43,7 +43,7 @@ export class PeopleResolver {
   }
 
   @Query((returns) => [Person])
-  async people(): Promise<Person[]> {
+  async listPeople(): Promise<Person[]> {
     return range(5).map(() =>
       generateFakePerson({
         id: generateUniqueId(),
@@ -51,7 +51,7 @@ export class PeopleResolver {
     );
   }
 
-  @Mutation(() => Person)
+  @Mutation((returns) => Person)
   async createPerson(
     @Args('input')
     input: CreatePersonInput
