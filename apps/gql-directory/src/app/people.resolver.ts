@@ -8,7 +8,10 @@ import {
 } from '@nestjs/graphql';
 import { Person } from './person.model';
 import { CommandBus } from '@nestjs/cqrs';
-import { CreatePersonCommandInput } from '@aplus/gql-directory/people/cqrs';
+import {
+  CreatePersonCommandInput,
+  CreatePersonCommandOutput,
+} from '@aplus/gql-directory/people/cqrs';
 import { CreatePersonInput } from './people/create-person.input';
 import { customPlainToInstance } from './custom-plain-to-instance';
 import Chance from 'chance';
@@ -53,11 +56,16 @@ export class PeopleResolver {
     @Args('input')
     input: CreatePersonInput
   ): Promise<Person> {
-    return this.commandBus.execute(
+    const result = await this.commandBus.execute<
+      CreatePersonCommandInput,
+      CreatePersonCommandOutput
+    >(
       customPlainToInstance(CreatePersonCommandInput, {
         firstName: input.firstName,
         lastName: input.lastName,
       })
     );
+
+    return result.record;
   }
 }
