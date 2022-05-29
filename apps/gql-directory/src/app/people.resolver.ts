@@ -7,9 +7,15 @@ import {
   Resolver,
 } from '@nestjs/graphql';
 import { Person } from './person.model';
+import { CommandBus } from '@nestjs/cqrs';
+import { CreatePersonCommandInput } from '@aplus/gql-directory/people/cqrs';
+import { CreatePersonInput } from './people/create-person.input';
+import { customPlainToInstance } from './custom-plain-to-instance';
 
 @Resolver((of) => Person)
 export class PeopleResolver {
+  constructor(private commandBus: CommandBus) {}
+
   @Query((returns) => Person)
   async person(@Args('personId') personId: string): Promise<Person> {
     return {
@@ -30,11 +36,12 @@ export class PeopleResolver {
   }
 
   @Mutation(() => Person)
-  async createPerson(): Promise<Person> {
-    return {
-      id: 'DEMO_I_@D',
-      firstName: 'Created person first',
-      lastName: 'Created person Last',
-    };
+  async createPerson(@Args('input') input: CreatePersonInput): Promise<Person> {
+    return this.commandBus.execute(
+      customPlainToInstance(CreatePersonCommandInput, {
+        firstName: input.firstName,
+        lastName: input.lastName,
+      })
+    );
   }
 }
