@@ -27,6 +27,9 @@
       "@aplus/web-directory/people/feature-create": [
         "libs/web-directory/people/feature-create/src/index.ts"
       ],
+      "@aplus/web-directory/people/feature-list": [
+        "libs/web-directory/people/feature-list/src/index.ts"
+      ],
       "@aplus/web-directory/people/feature-shell": [
         "libs/web-directory/people/feature-shell/src/index.ts"
       ],
