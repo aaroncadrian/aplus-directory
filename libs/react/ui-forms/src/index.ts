@@ -1,1 +1,1 @@
-export * from './lib/react-ui-forms';
+export * from './lib/prefix/form-prefix';

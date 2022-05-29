@@ -13,6 +13,7 @@ import {
 } from '@aplus/web-directory/people/ui-forms';
 import { Form as RFF } from 'react-final-form';
 import arrayMutators from 'final-form-arrays';
+import { PrefixProvider } from '@aplus/react/ui-forms';
 
 export const CreatePersonPage = () => {
   const submitPerson = (formValues: unknown) => {
@@ -55,7 +56,9 @@ export const CreatePersonPage = () => {
               </Container>
 
               <Container header={<Header>Postal Address</Header>}>
-                <PostalAddressForm />
+                <PrefixProvider prefix={'postalAddress'}>
+                  <PostalAddressForm />
+                </PrefixProvider>
               </Container>
             </SpaceBetween>
           </Form>
