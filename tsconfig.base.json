@@ -15,6 +15,7 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
+      "@aplus/react/ui-forms": ["libs/react/ui-forms/src/index.ts"],
       "@aplus/web-directory/people/feature-create": [
         "libs/web-directory/people/feature-create/src/index.ts"
       ],

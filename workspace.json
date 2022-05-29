@@ -2,6 +2,7 @@
   "$schema": "./node_modules/nx/schemas/workspace-schema.json",
   "version": 2,
   "projects": {
+    "react-ui-forms": "libs/react/ui-forms",
     "web-directory": "apps/web-directory",
     "web-directory-e2e": "apps/web-directory-e2e",
     "web-directory-people-feature-create": "libs/web-directory/people/feature-create",
