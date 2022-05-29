@@ -8,8 +8,6 @@ import {
 import {
   EmailAddressForm,
   PersonDetailsForm,
-  PhoneNumbersForm,
-  PostalAddressForm,
 } from '@aplus/web-directory/people/ui-forms';
 import { Form as RFF } from 'react-final-form';
 import arrayMutators from 'final-form-arrays';
@@ -25,6 +23,7 @@ export const CreatePersonPage = () => {
       mutators={{
         ...arrayMutators,
       }}
+      subscription={{ submitting: true, pristine: true }}
     >
       {({ handleSubmit, values }) => (
         <form onSubmit={handleSubmit}>
@@ -47,14 +46,6 @@ export const CreatePersonPage = () => {
 
               <Container header={<Header>Details</Header>}>
                 <PersonDetailsForm />
-              </Container>
-
-              <Container header={<Header>Phones</Header>}>
-                <PhoneNumbersForm />
-              </Container>
-
-              <Container header={<Header>Postal Address</Header>}>
-                <PostalAddressForm />
               </Container>
             </SpaceBetween>
           </Form>
