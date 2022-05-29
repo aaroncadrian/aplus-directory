@@ -1,5 +1,4 @@
 import { FormField, Input, SpaceBetween } from '@awsui/components-react';
-import { Field } from 'react-final-form';
 import { renderAwsField } from '../_internal/render-aws-field';
 import { PrefixedField } from '@aplus/react/ui-forms';
 

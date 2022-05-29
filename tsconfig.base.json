@@ -5,6 +5,8 @@
     "sourceMap": true,
     "declaration": false,
     "moduleResolution": "node",
+    "allowSyntheticDefaultImports": true,
+    "esModuleInterop": true,
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
     "importHelpers": true,
@@ -15,7 +17,13 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
+      "@aplus/gql-directory/people/cqrs": [
+        "libs/gql-directory/people/cqrs/src/index.ts"
+      ],
       "@aplus/react/ui-forms": ["libs/react/ui-forms/src/index.ts"],
+      "@aplus/shared/people/domain": ["libs/shared/people/domain/src/index.ts"],
+      "@aplus/shared/util-dates": ["libs/shared/util-dates/src/index.ts"],
+      "@aplus/shared/util-ids": ["libs/shared/util-ids/src/index.ts"],
       "@aplus/web-directory/people/feature-create": [
         "libs/web-directory/people/feature-create/src/index.ts"
       ],
