@@ -7,6 +7,7 @@ import {
 } from '@awsui/components-react';
 import { Field } from 'react-final-form';
 import DatePicker from '@awsui/components-react/date-picker';
+import { FormFieldLabel } from './_internal/form-field-label';
 
 const FIELDS = [
   {
@@ -17,6 +18,7 @@ const FIELDS = [
   {
     name: 'middleName',
     label: 'Middle Name',
+    optional: true,
   },
   {
     name: 'lastName',
@@ -25,6 +27,7 @@ const FIELDS = [
   {
     name: 'nickname',
     label: 'Nickname',
+    optional: true,
   },
 ];
 
@@ -43,7 +46,13 @@ export const PersonDetailsForm = () => {
       {FIELDS.map((field) => (
         <Field key={field.name} name={field.name}>
           {({ input: { value, onChange, onFocus, onBlur } }) => (
-            <FormField label={field.label}>
+            <FormField
+              label={
+                <FormFieldLabel optional={field.optional}>
+                  {field.label}
+                </FormFieldLabel>
+              }
+            >
               <Input
                 autoFocus={field.autoFocus}
                 value={value}
@@ -58,7 +67,7 @@ export const PersonDetailsForm = () => {
 
       <Field name={'gender'}>
         {({ input: { value, onChange, onFocus, onBlur } }) => (
-          <FormField label={'Gender'}>
+          <FormField label={<FormFieldLabel optional>Gender</FormFieldLabel>}>
             <Select
               options={GENDER_SELECT_OPTIONS}
               selectedOption={value}
@@ -72,7 +81,9 @@ export const PersonDetailsForm = () => {
 
       <Field name={'dateOfBirth'}>
         {({ input: { value, onChange, onFocus, onBlur } }) => (
-          <FormField label={'Date of Birth'}>
+          <FormField
+            label={<FormFieldLabel optional>Date of Birth</FormFieldLabel>}
+          >
             <DatePicker
               placeholder={'yyyy/mm/dd'}
               todayAriaLabel={'Today'}
