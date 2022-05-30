@@ -19,6 +19,27 @@ import React, { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useCreatePerson } from './use-create-person';
 import { CreatePersonFormSchema } from './create-person-form.schema';
+import { CreatePersonFormValidationSchema } from './create-person-form.validation';
+import { AnyObject, ValidationErrors } from 'final-form';
+import { ValidationErrorItem } from 'joi';
+import { set } from 'lodash';
+
+const validateForm = (formValues: CreatePersonFormSchema): ValidationErrors => {
+  const result = CreatePersonFormValidationSchema.validate(formValues, {
+    abortEarly: false,
+  });
+
+  console.log(result);
+
+  return result?.error?.details?.reduce(
+    (acc: AnyObject, item: ValidationErrorItem): AnyObject => {
+      set(acc, item.path, item);
+
+      return acc;
+    },
+    {} as AnyObject
+  );
+};
 
 export const CreatePersonPage = () => {
   const navigate = useNavigate();
@@ -49,6 +70,7 @@ export const CreatePersonPage = () => {
   return (
     <RFF<CreatePersonFormSchema>
       onSubmit={submitPerson}
+      validate={validateForm}
       mutators={{
         ...arrayMutators,
       }}
