@@ -1,16 +1,10 @@
-import styles from './web-directory-people-feature-describe.module.scss';
+import { DescribePersonPage } from './describe-person-page/describe-person-page';
+import { useParams } from 'react-router-dom';
 
-/* eslint-disable-next-line */
-export interface WebDirectoryPeopleFeatureDescribeProps {}
+export function WebDirectoryPeopleFeatureDescribe() {
+  const { personId } = useParams<{ personId: string }>();
 
-export function WebDirectoryPeopleFeatureDescribe(
-  props: WebDirectoryPeopleFeatureDescribeProps
-) {
-  return (
-    <div className={styles['container']}>
-      <h1>Welcome to WebDirectoryPeopleFeatureDescribe!</h1>
-    </div>
-  );
+  return <DescribePersonPage personId={personId} />;
 }
 
 export default WebDirectoryPeopleFeatureDescribe;

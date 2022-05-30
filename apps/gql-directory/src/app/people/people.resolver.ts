@@ -1,5 +1,6 @@
 import {
   Args,
+  ID,
   Mutation,
   Parent,
   Query,
@@ -24,7 +25,12 @@ export class PeopleResolver {
   constructor(private commandBus: CommandBus) {}
 
   @Query((returns) => Person)
-  async describePerson(@Args('personId') personId: string): Promise<Person> {
+  async describePerson(
+    @Args('personId', {
+      type: () => ID,
+    })
+    personId: string
+  ): Promise<Person> {
     const result = await this.commandBus.execute<
       DescribePersonCommandInput,
       DescribePersonCommandOutput
