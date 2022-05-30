@@ -42,7 +42,8 @@ const GENDER_SELECT_OPTIONS: SelectProps.Options = [
   },
 ];
 
-export const PersonDetailsForm = () => {
+export const PersonDetailsForm = (props: { autoFocus?: boolean }) => {
+  const { autoFocus } = props;
   return (
     <SpaceBetween size={'m'}>
       {FIELDS.map((field) => (
@@ -58,7 +59,7 @@ export const PersonDetailsForm = () => {
                 errorText={meta.touched && meta?.error?.message}
               >
                 <Input
-                  autoFocus={field.autoFocus}
+                  autoFocus={autoFocus && field.autoFocus}
                   value={value}
                   onBlur={onBlur}
                   onFocus={onFocus}

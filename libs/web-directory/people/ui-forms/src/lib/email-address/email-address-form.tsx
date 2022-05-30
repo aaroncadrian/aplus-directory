@@ -2,7 +2,9 @@ import { FormField, Input, SpaceBetween } from '@awsui/components-react';
 import { Field } from 'react-final-form';
 import { renderAwsField } from '../_internal/render-aws-field';
 
-export const EmailAddressForm = () => {
+export const EmailAddressForm = (props: { autoFocus?: boolean }) => {
+  const { autoFocus } = props;
+
   return (
     <SpaceBetween size={'m'}>
       <Field name={'emailAddress'}>
@@ -13,6 +15,7 @@ export const EmailAddressForm = () => {
               errorText={meta.touched && meta?.error?.message}
             >
               <Input
+                autoFocus={autoFocus}
                 value={value}
                 onBlur={onBlur}
                 onFocus={onFocus}

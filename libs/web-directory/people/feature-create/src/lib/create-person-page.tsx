@@ -125,7 +125,7 @@ export const CreatePersonPage = () => {
           >
             <SpaceBetween size={'l'}>
               <Container header={<Header>Email Address</Header>}>
-                <EmailAddressForm />
+                <EmailAddressForm autoFocus />
               </Container>
 
               <Container header={<Header>Details</Header>}>
