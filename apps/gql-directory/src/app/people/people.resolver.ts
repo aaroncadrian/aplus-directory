@@ -19,6 +19,7 @@ import {
 } from '@aplus/gql-directory/people/cqrs';
 import { CreatePersonInput } from './dtos/create-person.input';
 import { customPlainToInstance } from '../utils/custom-plain-to-instance';
+import { Phone } from './models/phone.model';
 
 @Resolver((of) => Person)
 export class PeopleResolver {
@@ -46,6 +47,11 @@ export class PeopleResolver {
   @ResolveField()
   middleName(@Parent() person: Person): string {
     return `${person.firstName} ${person.lastName}`;
+  }
+
+  @ResolveField()
+  phones(@Parent() person: Person): Phone[] {
+    return [];
   }
 
   @Query((returns) => [Person])

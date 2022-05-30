@@ -7,6 +7,11 @@ const DESCRIBE_PERSON = gql`
       id
       firstName
       lastName
+      phones {
+        id
+        phoneNumber
+        phoneType
+      }
     }
   }
 `;
