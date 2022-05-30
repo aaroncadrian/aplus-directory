@@ -1,10 +1,17 @@
 import { Route, Routes } from 'react-router-dom';
-import WebDirectoryPeopleFeatureCreate from '@aplus/web-directory/people/feature-create';
+import ListPeoplePage from '@aplus/web-directory/people/feature-list';
+import React from 'react';
+
+const CreatePersonPage = React.lazy(
+  () => import('@aplus/web-directory/people/feature-create')
+);
 
 export function WebDirectoryPeopleFeatureShell() {
   return (
     <Routes>
-      <Route path={'create'} element={<WebDirectoryPeopleFeatureCreate />} />
+      <Route index element={<ListPeoplePage />} />
+
+      <Route path={'create'} element={<CreatePersonPage />} />
     </Routes>
   );
 }

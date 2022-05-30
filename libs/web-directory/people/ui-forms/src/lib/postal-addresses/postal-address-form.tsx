@@ -34,16 +34,21 @@ export const PostalAddressForm = () => {
     <SpaceBetween size={'m'}>
       {FIELDS.map((field) => (
         <PrefixedField key={field.name} name={field.name}>
-          {renderAwsField(({ input: { value, onChange, onFocus, onBlur } }) => (
-            <FormField label={field.label}>
-              <Input
-                value={value}
-                onBlur={onBlur}
-                onFocus={onFocus}
-                onChange={(event) => onChange(event.detail.value)}
-              />
-            </FormField>
-          ))}
+          {renderAwsField(
+            ({ input: { value, onChange, onFocus, onBlur }, meta }) => (
+              <FormField
+                label={field.label}
+                errorText={meta.touched && meta?.error?.message}
+              >
+                <Input
+                  value={value}
+                  onBlur={onBlur}
+                  onFocus={onFocus}
+                  onChange={(event) => onChange(event.detail.value)}
+                />
+              </FormField>
+            )
+          )}
         </PrefixedField>
       ))}
     </SpaceBetween>
