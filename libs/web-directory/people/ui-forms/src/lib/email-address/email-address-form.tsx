@@ -6,16 +6,21 @@ export const EmailAddressForm = () => {
   return (
     <SpaceBetween size={'m'}>
       <Field name={'emailAddress'}>
-        {renderAwsField(({ input: { value, onChange, onFocus, onBlur } }) => (
-          <FormField label={'Email Address'}>
-            <Input
-              value={value}
-              onBlur={onBlur}
-              onFocus={onFocus}
-              onChange={(event) => onChange(event.detail.value)}
-            />
-          </FormField>
-        ))}
+        {renderAwsField(
+          ({ input: { value, onChange, onFocus, onBlur }, meta }) => (
+            <FormField
+              label={'Email Address'}
+              errorText={meta.touched && meta?.error?.message}
+            >
+              <Input
+                value={value}
+                onBlur={onBlur}
+                onFocus={onFocus}
+                onChange={(event) => onChange(event.detail.value)}
+              />
+            </FormField>
+          )
+        )}
       </Field>
     </SpaceBetween>
   );
