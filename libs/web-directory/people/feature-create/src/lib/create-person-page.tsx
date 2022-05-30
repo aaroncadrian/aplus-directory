@@ -78,12 +78,6 @@ export const CreatePersonPage = () => {
     >
       {({ handleSubmit }) => (
         <form onSubmit={handleSubmit}>
-          {!loading && error && (
-            <div>
-              Error: <pre>{JSON.stringify(error, null, 2)}</pre>
-            </div>
-          )}
-
           <BreadcrumbGroup
             items={[
               {
@@ -113,11 +107,18 @@ export const CreatePersonPage = () => {
 
           <Form
             header={<Header variant={'h1'}>Create Person</Header>}
+            errorText={error?.message}
             actions={
               <SpaceBetween size={'s'} direction={'horizontal'}>
-                <Button formAction={'none'}>Cancel</Button>
+                <Button formAction={'none'} disabled={loading}>
+                  Cancel
+                </Button>
 
-                <Button formAction={'submit'} variant={'primary'}>
+                <Button
+                  formAction={'submit'}
+                  variant={'primary'}
+                  loading={loading}
+                >
                   Create
                 </Button>
               </SpaceBetween>
