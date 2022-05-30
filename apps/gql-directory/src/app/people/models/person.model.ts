@@ -21,5 +21,5 @@ export class Person implements IPerson {
   @Field((returns) => [Phone], {
     nullable: true,
   })
-  phones: Phone[];
+  phones?: Phone[];
 }
